@@ -1,21 +1,28 @@
-on: # El Bloque on define cu  ndo va a ejecutarse el workflow
+name: Granja Animales Node.js CI
+
+on:
   push:
     branches:
       - main
   pull_request:
     branches:
       - main
-jobs: # Aqu   se definen los jobs, en nuestro caso solo uno: build
-   build:
-    runs-on: ubuntu-latest # Cada job corre en un entorno: Linux, Mac o Windows
-    steps: # Pasos que ejecutar   el job
-    - name: Checkout repository # Nombramos cada paso del Job
-      uses: actions/checkout@v2 # Hace un clonado del repo
-    - name: Use Node.js
-      uses: actions/setup-node@v1 # Instala node dentro del contenedor del job
-      with: # Con with se le pueden pasar argumentos
-        node-version: '18.x'
-     - name: Run Yarn
-      run: yarn
-    - name: Run tests
-      run: yarn test
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Use Node.js
+        uses: actions/setup-node@v1
+        with:
+          node-version: '18.x'
+
+      - name: Run Yarn
+        run: yarn
+
+      - name: Run tests
+        run: yarn test
