@@ -31,4 +31,4 @@ jobs:
           context: .
           file: ./Dockerfile
           push: true
-          tags: usuariodockerhub/practica_7.1:latest
+          tags: albahub/practica_7.1:latest
